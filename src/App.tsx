@@ -4,6 +4,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
 import FilterForm from './components/FilterForm';
 import ScholarshipCard from './components/ScholarshipCard';
+import ChatBot from './components/ChatBot';
 
 import { useScholarships } from './hooks/useScholarships';
 
@@ -127,6 +128,7 @@ const AppContent: React.FC = () => {
           )
         ) : null}
       </main>
+      <ChatBot />
     </div>
   );
 };
