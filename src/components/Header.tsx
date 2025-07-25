@@ -18,7 +18,7 @@ const Header: React.FC = () => {
                 Udaan
               </h1>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Scholarship Matching Platform
+              Your ultimate scholarship matching platform
               </p>
             </div>
           </div>

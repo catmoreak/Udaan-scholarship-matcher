@@ -8,13 +8,20 @@ import ScholarshipCard from './components/ScholarshipCard';
 import { useScholarships } from './hooks/useScholarships';
 
 const AppContent: React.FC = () => {
+  // Track if user has submitted the filter form
+  const [hasSearched, setHasSearched] = useState(false);
+
+  // Only show scholarships after user submits the form
+  const handleFilter = (criteria: any) => {
+    setHasSearched(true);
+    filterScholarships(criteria);
+  };
   const [showLoader, setShowLoader] = useState(true);
   useEffect(() => {
     const timer = setTimeout(() => setShowLoader(false), 3000);
     return () => clearTimeout(timer);
   }, []);
   const { 
-    scholarships, 
     filteredScholarships, 
     loading, 
     error, 
@@ -38,10 +45,6 @@ const AppContent: React.FC = () => {
       </div>
     );
   }
-
-  const handleFilter = (criteria: any) => {
-    filterScholarships(criteria);
-  };
 
 
 
@@ -78,68 +81,51 @@ const AppContent: React.FC = () => {
           </div>
         )}
 
-        {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Array.from({length: 6}).map((_, i) => (
-              <div key={i} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 animate-pulse">
-                <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
-                <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
-                <div className="h-20 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
-                <div className="flex space-x-2">
-                  <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-16"></div>
-                  <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-16"></div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : filteredScholarships.length > 0 ? (
-          <>
-            <div className="mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                {filteredScholarships.length} Scholarships Found
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Scholarships matching your criteria
-              </p>
-            </div>
+        {hasSearched ? (
+          loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredScholarships.map((scholarship) => (
-                <ScholarshipCard key={scholarship.id} scholarship={scholarship} />
+              {Array.from({length: 6}).map((_, i) => (
+                <div key={i} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 animate-pulse">
+                  <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+                  <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+                  <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+                  <div className="h-20 bg-gray-200 dark:bg-gray-700 rounded mb-4"></div>
+                  <div className="flex space-x-2">
+                    <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-16"></div>
+                    <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-16"></div>
+                  </div>
+                </div>
               ))}
             </div>
-          </>
-        ) : scholarships.length === 0 ? (
-          <div className="text-center py-12">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
-              <AlertCircle className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                No Scholarships Available
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Please check back later or contact support if this persists.
-              </p>
-              <button
-                onClick={refetch}
-                className="inline-flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors"
-              >
-                <RefreshCw className="h-4 w-4" />
-                <span>Retry</span>
-              </button>
+          ) : filteredScholarships.length > 0 ? (
+            <>
+              <div className="mb-6">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                  {filteredScholarships.length} Scholarships Found
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Scholarships matching your criteria
+                </p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredScholarships.map((scholarship) => (
+                  <ScholarshipCard key={scholarship.id} scholarship={scholarship} />
+                ))}
+              </div>
+            </>
+          ) : (
+            <div className="text-center py-12">
+              <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  No Matching Scholarships
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Try adjusting your filter criteria to find more opportunities.
+                </p>
+              </div>
             </div>
-          </div>
-        ) : (
-          <div className="text-center py-12">
-            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                No Matching Scholarships
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400">
-                Try adjusting your filter criteria to find more opportunities.
-              </p>
-            </div>
-          </div>
-        )}
+          )
+        ) : null}
       </main>
     </div>
   );
