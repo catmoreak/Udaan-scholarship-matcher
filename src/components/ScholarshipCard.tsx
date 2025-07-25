@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExternalLink,  Users, MapPin } from 'lucide-react';
+import {  Users, MapPin } from 'lucide-react';
 import { Scholarship } from '../types/scholarship';
 
 interface ScholarshipCardProps {
