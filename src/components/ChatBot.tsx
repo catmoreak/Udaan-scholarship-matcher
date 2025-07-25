@@ -94,7 +94,7 @@ const ChatBot: React.FC = () => {
               <circle cx="10" cy="10" r="9" fill="#3b82f6" />
               <text x="10" y="15" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#fff" fontFamily="Arial" dominantBaseline="middle">i</text>
             </svg>
-            <span>Need help?</span>
+            <span>Need help ?</span>
           </div>
         </div>
       </div>
