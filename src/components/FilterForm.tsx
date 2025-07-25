@@ -9,12 +9,12 @@ interface FilterFormProps {
 
 const FilterForm: React.FC<FilterFormProps> = ({ onFilter, loading }) => {
   const [criteria, setCriteria] = useState<FilterCriteria>({
-    class: 10,
-    age: 16,
-    percentage: 75,
-    category: 'General',
-    religion: 'Any',
-    location: 'Urban',
+    class: 0,
+    age: 0,
+    percentage: 0,
+    category: '',
+    religion: '',
+    location: '',
     disability: false,
   });
 
