@@ -16,13 +16,14 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isDark, setIsDark] = useState(false);
 
-  useEffect(() => {
+  // Default to dark mode if no preference is stored
+  const [isDark, setIsDark] = useState(() => {
     const stored = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setIsDark(stored === 'dark' || (!stored && prefersDark));
-  }, []);
+    if (stored === 'dark') return true;
+    if (stored === 'light') return false;
+    return true; // default to dark
+  });
 
   useEffect(() => {
     if (isDark) {
