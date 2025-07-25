@@ -4,7 +4,7 @@ import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
 import FilterForm from './components/FilterForm';
 import ScholarshipCard from './components/ScholarshipCard';
-import Stats from './components/Stats';
+
 import { useScholarships } from './hooks/useScholarships';
 
 const AppContent: React.FC = () => {

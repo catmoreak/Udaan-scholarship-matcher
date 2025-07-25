@@ -67,14 +67,14 @@ const ScholarshipCard: React.FC<ScholarshipCardProps> = ({ scholarship }) => {
             href={scholarship.website_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-5 py-2 bg-blue-600 dark:bg-blue-700 text-white font-semibold rounded-lg shadow hover:bg-blue-700 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-150 text-base"
-            style={{ minWidth: 110 }}
+            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-white dark:bg-gray-900 border border-blue-600 dark:border-blue-500 text-blue-700 dark:text-blue-200 font-semibold rounded-full shadow-sm hover:bg-blue-50 dark:hover:bg-blue-800 hover:text-blue-800 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-150 text-base"
+            style={{ minWidth: 120 }}
             aria-label="Apply for scholarship"
           >
-            <span>Apply</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-4 w-4">
+            <span className="pr-1">Apply now</span>
+            {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-5 w-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-            </svg>
+            </svg> */}
           </a>
         </div>
       </div>
