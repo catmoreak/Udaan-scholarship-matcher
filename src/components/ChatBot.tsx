@@ -16,11 +16,8 @@ const QUESTIONS = [
   {
     q: 'How do I know if I am eligible?',
     a: 'Use the filter form to enter your details. The platform will show scholarships matching your profile.'
-  },
-  {
-    q: 'Who can I contact for help?',
-    a: 'You can reach out to the support team via the contact information provided on the scholarship website.'
   }
+  
 ];
 
 const ChatBot: React.FC = () => {
@@ -41,7 +38,7 @@ const ChatBot: React.FC = () => {
       setTimeout(() => setShowTooltip(false), 2000);
     };
     trigger();
-    interval = setInterval(trigger, 5000);
+    interval = setInterval(trigger, 12000);
     return () => {
       clearInterval(interval);
       clearTimeout(shakeTimeout);
