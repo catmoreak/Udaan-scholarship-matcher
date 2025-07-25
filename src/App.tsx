@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { AlertCircle, RefreshCw } from 'lucide-react';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header';
@@ -8,6 +8,11 @@ import ScholarshipCard from './components/ScholarshipCard';
 import { useScholarships } from './hooks/useScholarships';
 
 const AppContent: React.FC = () => {
+  const [showLoader, setShowLoader] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => setShowLoader(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
   const { 
     scholarships, 
     filteredScholarships, 
@@ -16,6 +21,23 @@ const AppContent: React.FC = () => {
     filterScholarships,
     refetch 
   } = useScholarships();
+
+  // Detect dark mode for loader
+  const isDark = typeof window !== 'undefined' && document.documentElement.classList.contains('dark');
+
+  if (showLoader) {
+    return (
+      <div className={`fixed inset-0 flex items-center justify-center z-50 min-h-screen w-full ${isDark ? 'bg-gray-900' : 'bg-gray-50'} transition-colors`}>
+        <div className="flex flex-col items-center">
+          <svg className="animate-spin h-12 w-12 text-blue-600 dark:text-blue-400 mb-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+          </svg>
+          <span className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Loading...</span>
+        </div>
+      </div>
+    );
+  }
 
   const handleFilter = (criteria: any) => {
     filterScholarships(criteria);
