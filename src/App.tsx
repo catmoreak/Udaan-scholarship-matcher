@@ -8,6 +8,41 @@ import ChatBot from './components/ChatBot';
 
 import { useScholarships } from './hooks/useScholarships';
 
+// Dismissible disclaimer notification component
+function DisclaimerNotification() {
+  const [visible, setVisible] = React.useState(true);
+  if (!visible) return null;
+  return (
+    <div
+      className="fixed top-0 left-0 w-full z-50 flex justify-center items-start px-2 sm:px-4 pt-4 pointer-events-none"
+      role="region"
+      aria-label="Disclaimer notification"
+    >
+      <div
+        className="pointer-events-auto w-full max-w-md sm:max-w-xl bg-yellow-50 dark:bg-yellow-900/90 border border-yellow-300 dark:border-yellow-700 text-yellow-900 dark:text-yellow-100 rounded-xl shadow-2xl flex items-start gap-3 px-4 py-3"
+        style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18)' }}
+      >
+        <div className="pt-1">
+          <svg className="h-7 w-7 text-yellow-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </div>
+        <div className="flex-1 min-w-0">
+          <span className="block text-base font-semibold mb-1">Disclaimer</span>
+          <span className="block text-sm leading-relaxed">
+            The scholarship data shown here is compiled from various public sources. While we strive for accuracy, some details (such as eligibility, deadlines, or rewards) may change or be outdated. <b>User discretion is required.</b> Please verify with the official scholarship websites before applying.
+          </span>
+        </div>
+        <button
+          onClick={() => setVisible(false)}
+          className="ml-2 mt-1 text-yellow-700 dark:text-yellow-200 hover:text-yellow-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-full transition-colors duration-150"
+          aria-label="Dismiss disclaimer notification"
+        >
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+    </div>
+  );
+}
+
 const AppContent: React.FC = () => {
   // Track if user has submitted the filter form
   const [hasSearched, setHasSearched] = useState(false);
@@ -51,6 +86,8 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
+      {/* Disclaimer Notification */}
+      <DisclaimerNotification />
       <Header />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
