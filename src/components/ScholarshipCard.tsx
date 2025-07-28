@@ -19,10 +19,7 @@ const ScholarshipCard: React.FC<ScholarshipCardProps> = ({ scholarship }) => {
               by {scholarship.provider}
             </p>
           </div>
-          <div className="flex items-center space-x-2 text-green-600 dark:text-green-400">
-            
-            <span className="font-semibold">{scholarship.amount}</span>
-          </div>
+          {/* Amount removed as requested */}
         </div>
 
         <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
