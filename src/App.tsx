@@ -43,6 +43,42 @@ function DisclaimerNotification() {
   );
 }
 
+const StarsBackground: React.FC = () => (
+  <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 w-full h-full">
+    <svg width="100%" height="100%" className="w-full h-full" style={{ position: 'absolute', top: 0, left: 0 }}>
+      {/* Main stars */}
+      <circle cx="10%" cy="20%" r="2.5" fill="#fff" opacity="0.7">
+        <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="30%" cy="40%" r="1.8" fill="#fff" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.1;0.5" dur="1.7s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="70%" cy="30%" r="2.1" fill="#fff" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="80%" cy="60%" r="2.7" fill="#fff" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.15;0.5" dur="2.3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="50%" cy="80%" r="2.2" fill="#fff" opacity="0.4">
+        <animate attributeName="opacity" values="0.4;0.1;0.4" dur="1.9s" repeatCount="indefinite"/>
+      </circle>
+      {/* Extra subtle background stars */}
+      <circle cx="15%" cy="70%" r="1.1" fill="#fff" opacity="0.18">
+        <animate attributeName="opacity" values="0.18;0.05;0.18" dur="2.7s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="60%" cy="15%" r="1.3" fill="#fff" opacity="0.13">
+        <animate attributeName="opacity" values="0.13;0.03;0.13" dur="2.1s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="90%" cy="50%" r="1.4" fill="#fff" opacity="0.12">
+        <animate attributeName="opacity" values="0.12;0.04;0.12" dur="2.9s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="40%" cy="10%" r="1.0" fill="#fff" opacity="0.10">
+        <animate attributeName="opacity" values="0.10;0.03;0.10" dur="2.3s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+);
+
 const AppContent: React.FC = () => {
   // Track if user has submitted the filter form
   const [hasSearched, setHasSearched] = useState(false);
@@ -85,12 +121,12 @@ const AppContent: React.FC = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors relative">
+      <StarsBackground />
       {/* Disclaimer Notification */}
       <DisclaimerNotification />
       <Header />
-      
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Discover Your Path to Success
@@ -99,11 +135,7 @@ const AppContent: React.FC = () => {
             Find scholarships tailored to your profile. We match you with opportunities based on your academic background, category, and personal circumstances.
           </p>
         </div>
-
-        
-
         <FilterForm onFilter={handleFilter} loading={loading} />
-
         {error && !error.includes('Missing Supabase') && (
           <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-6 flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -118,7 +150,6 @@ const AppContent: React.FC = () => {
             </button>
           </div>
         )}
-
         {hasSearched ? (
           loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
