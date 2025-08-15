@@ -8,8 +8,13 @@ interface ScholarshipCardProps {
 
 const ScholarshipCard: React.FC<ScholarshipCardProps> = ({ scholarship }) => {
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 group">
-      <div className="p-6">
+    <div
+      className="relative bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 group overflow-hidden transition-all duration-300 animate-fadeIn"
+      style={{ animationDelay: `${Math.random() * 0.2 + 0.05}s` }}
+    >
+      {/* Animated gradient border on hover */}
+      <div className="absolute inset-0 pointer-events-none rounded-xl border-2 border-transparent group-hover:border-blue-400 group-hover:animate-borderGradient transition-all duration-500 z-10" />
+      <div className="relative p-6 z-20">
         <div className="flex justify-between items-start mb-4">
           <div>
             <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
@@ -64,14 +69,20 @@ const ScholarshipCard: React.FC<ScholarshipCardProps> = ({ scholarship }) => {
             href={scholarship.website_url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-white dark:bg-gray-900 border border-blue-600 dark:border-blue-500 text-blue-700 dark:text-blue-200 font-semibold rounded-full shadow-sm hover:bg-blue-50 dark:hover:bg-blue-800 hover:text-blue-800 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-150 text-base"
+            className="apply-btn inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-white dark:bg-gray-900 border border-blue-600 dark:border-blue-500 text-blue-700 dark:text-blue-200 font-semibold rounded-full shadow-sm hover:bg-blue-50 dark:hover:bg-blue-800 hover:text-blue-800 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-150 text-base overflow-hidden relative"
             style={{ minWidth: 120 }}
             aria-label="Apply for scholarship"
+            onClick={e => {
+              const btn = e.currentTarget;
+              const ripple = document.createElement('span');
+              ripple.className = 'ripple';
+              ripple.style.left = `${e.nativeEvent.offsetX}px`;
+              ripple.style.top = `${e.nativeEvent.offsetY}px`;
+              btn.appendChild(ripple);
+              setTimeout(() => ripple.remove(), 600);
+            }}
           >
             <span className="pr-1">Apply now</span>
-            {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="h-5 w-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
-            </svg> */}
           </a>
         </div>
       </div>
@@ -80,3 +91,27 @@ const ScholarshipCard: React.FC<ScholarshipCardProps> = ({ scholarship }) => {
 };
 
 export default ScholarshipCard;
+
+// Tailwind CSS custom animations (add to your global CSS if not present)
+// .animate-fadeIn { animation: fadeIn 0.7s cubic-bezier(0.4,0,0.2,1) both; }
+// @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: none; } }
+// .group-hover\:animate-borderGradient:hover { animation: borderGradient 1.2s linear infinite; }
+// @keyframes borderGradient {
+//   0% { border-color: #60a5fa; }
+//   50% { border-color: #2563eb; }
+//   100% { border-color: #60a5fa; }
+// }
+// .apply-btn .ripple {
+//   position: absolute;
+//   border-radius: 9999px;
+//   transform: scale(0);
+//   animation: ripple 0.6s linear;
+//   background: rgba(59,130,246,0.25);
+//   pointer-events: none;
+//   width: 120px; height: 120px;
+//   z-index: 30;
+//   opacity: 0.7;
+// }
+// @keyframes ripple {
+//   to { transform: scale(2.5); opacity: 0; }
+// }

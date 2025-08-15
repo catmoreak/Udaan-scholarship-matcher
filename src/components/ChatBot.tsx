@@ -98,7 +98,15 @@ const ChatBot: React.FC = () => {
 
 
       {open && (
-        <div className="w-80 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl mt-4 p-4">
+        <div className="w-80 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl mt-4 p-4 relative">
+          {/* Close (X) button at top right */}
+          <button
+            className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-400 rounded-full"
+            aria-label="Close chatbot"
+            onClick={() => { setOpen(false); setSelected(null); }}
+          >
+            <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
           <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">Udaan ChatBot</h3>
           <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">Ask a question :</p>
           <ul className="space-y-2 mb-4">
@@ -121,7 +129,13 @@ const ChatBot: React.FC = () => {
           )}
           <button
             className="mt-4 text-xs text-gray-500 hover:underline"
-            onClick={() => setSelected(null)}
+            onClick={() => {
+              if (selected !== null) {
+                setSelected(null);
+              } else {
+                setOpen(false);
+              }
+            }}
           >
             {selected !== null ? 'Back to questions' : 'Close'}
           </button>
