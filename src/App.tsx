@@ -8,6 +8,8 @@ import ChatBot from './components/ChatBot';
 
 import { useScholarships } from './hooks/useScholarships';
 
+// import ScholarshipAIAssistant from "./components/ScholarshipAIAssistant";
+
 // Dismissible disclaimer notification component
 function DisclaimerNotification() {
   const [visible, setVisible] = React.useState(true);
