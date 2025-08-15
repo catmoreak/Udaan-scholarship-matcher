@@ -19,11 +19,11 @@ function DisclaimerNotification() {
       aria-label="Disclaimer notification"
     >
       <div
-        className="pointer-events-auto w-full max-w-md sm:max-w-xl bg-yellow-50 dark:bg-yellow-900/90 border border-yellow-300 dark:border-yellow-700 text-yellow-900 dark:text-yellow-100 rounded-xl shadow-2xl flex items-start gap-3 px-4 py-3"
+        className="pointer-events-auto w-full max-w-md sm:max-w-xl bg-green-50 dark:bg-green-900/90 border border-green-300 dark:border-green-700 text-green-900 dark:text-green-100 rounded-xl shadow-2xl flex items-start gap-3 px-4 py-3"
         style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18)' }}
       >
         <div className="pt-1">
-          <svg className="h-7 w-7 text-yellow-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          <svg className="h-7 w-7 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
         </div>
         <div className="flex-1 min-w-0">
           <span className="block text-base font-semibold mb-1">Disclaimer</span>
@@ -33,7 +33,7 @@ function DisclaimerNotification() {
         </div>
         <button
           onClick={() => setVisible(false)}
-          className="ml-2 mt-1 text-yellow-700 dark:text-yellow-200 hover:text-yellow-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded-full transition-colors duration-150"
+          className="ml-2 mt-1 text-green-700 dark:text-green-200 hover:text-green-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-green-400 rounded-full transition-colors duration-150"
           aria-label="Dismiss disclaimer notification"
         >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
@@ -72,7 +72,7 @@ const AppContent: React.FC = () => {
     return (
       <div className={`fixed inset-0 flex items-center justify-center z-50 min-h-screen w-full ${isDark ? 'bg-gray-900' : 'bg-gray-50'} transition-colors`}>
         <div className="flex flex-col items-center">
-          <svg className="animate-spin h-12 w-12 text-blue-600 dark:text-blue-400 mb-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <svg className="animate-spin h-12 w-12 text-green-600 dark:text-green-400 mb-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
           </svg>

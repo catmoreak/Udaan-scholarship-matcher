@@ -12,8 +12,8 @@ const Stats: React.FC<StatsProps> = ({ totalScholarships, matchingScholarships }
       label: 'Total Scholarships',
       value: totalScholarships,
       icon: BookOpen,
-      color: 'text-blue-600 dark:text-blue-400',
-      bg: 'bg-blue-100 dark:bg-blue-900'
+  color: 'text-green-600 dark:text-green-400',
+  bg: 'bg-green-100 dark:bg-green-900'
     },
     {
       label: 'Matching Your Criteria',

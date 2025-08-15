@@ -10,7 +10,7 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
-            <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-lg">
+            <div className="bg-gradient-to-r from-green-600 to-lime-500 p-2 rounded-lg">
               <GraduationCap className="h-8 w-8 text-white" />
             </div>
             <div>
@@ -26,7 +26,7 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="relative inline-flex h-8 w-16 items-center rounded-full border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 shadow-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
+              className="relative inline-flex h-8 w-16 items-center rounded-full border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 shadow-sm transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
               aria-label="Toggle dark mode"
             >
               <span
@@ -36,7 +36,7 @@ const Header: React.FC = () => {
                 style={{ boxShadow: '0 2px 8px 0 rgba(0,0,0,0.12)' }}
               />
               <Sun className={`absolute left-2 h-4 w-4 text-yellow-500 transition-opacity duration-200 ${isDark ? 'opacity-0' : 'opacity-100'}`} />
-              <Moon className={`absolute right-2 h-4 w-4 text-blue-500 transition-opacity duration-200 ${isDark ? 'opacity-100' : 'opacity-0'}`} />
+              <Moon className={`absolute right-2 h-4 w-4 text-green-500 transition-opacity duration-200 ${isDark ? 'opacity-100' : 'opacity-0'}`} />
             </button>
           </div>
         </div>

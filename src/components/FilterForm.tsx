@@ -30,7 +30,7 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilter, loading }) => {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 mb-8">
       <div className="flex items-center space-x-2 mb-6">
-        <Filter className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+  <Filter className="h-5 w-5 text-green-600 dark:text-green-400" />
         <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
           Find Your Perfect Scholarship
         </h2>
@@ -45,7 +45,7 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilter, loading }) => {
             <select
               value={criteria.class}
               onChange={(e) => setCriteria({...criteria, class: Number(e.target.value)})}
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
             >
               {Array.from({length: 13}, (_, i) => i + 1).map(grade => (
                 <option key={grade} value={grade}>Class {grade}</option>
@@ -135,7 +135,7 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilter, loading }) => {
             id="disability"
             checked={criteria.disability}
             onChange={(e) => setCriteria({...criteria, disability: e.target.checked})}
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+            className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
           />
           <label htmlFor="disability" className="text-sm font-medium text-gray-700 dark:text-gray-300">
             Person with Disability (PWD)
@@ -145,7 +145,7 @@ const FilterForm: React.FC<FilterFormProps> = ({ onFilter, loading }) => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-gradient-to-r from-green-600 to-lime-500 hover:from-green-700 hover:to-lime-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Search className="h-5 w-5" />
           <span>{loading ? 'Searching...' : 'Find Scholarships'}</span>
