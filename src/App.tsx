@@ -107,13 +107,56 @@ const AppContent: React.FC = () => {
   if (showLoader) {
     return (
       <div className={`fixed inset-0 flex items-center justify-center z-50 min-h-screen w-full ${isDark ? 'bg-gray-900' : 'bg-gray-50'} transition-colors`}>
-        <div className="flex flex-col items-center">
-          <svg className="animate-spin h-12 w-12 text-green-600 dark:text-green-400 mb-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+        {/* Animated stars background */}
+        <div className="absolute inset-0 w-full h-full z-0">
+          <svg width="100%" height="100%" className="w-full h-full" style={{ position: 'absolute', top: 0, left: 0 }}>
+            <circle cx="10%" cy="20%" r="2.5" fill="#fff" opacity="0.7">
+              <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="30%" cy="40%" r="1.8" fill="#fff" opacity="0.5">
+              <animate attributeName="opacity" values="0.5;0.1;0.5" dur="1.7s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="70%" cy="30%" r="2.1" fill="#fff" opacity="0.6">
+              <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="80%" cy="60%" r="2.7" fill="#fff" opacity="0.5">
+              <animate attributeName="opacity" values="0.5;0.15;0.5" dur="2.3s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="50%" cy="80%" r="2.2" fill="#fff" opacity="0.4">
+              <animate attributeName="opacity" values="0.4;0.1;0.4" dur="1.9s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="15%" cy="70%" r="1.1" fill="#fff" opacity="0.18">
+              <animate attributeName="opacity" values="0.18;0.05;0.18" dur="2.7s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="60%" cy="15%" r="1.3" fill="#fff" opacity="0.13">
+              <animate attributeName="opacity" values="0.13;0.03;0.13" dur="2.1s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="90%" cy="50%" r="1.4" fill="#fff" opacity="0.12">
+              <animate attributeName="opacity" values="0.12;0.04;0.12" dur="2.9s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="40%" cy="10%" r="1.0" fill="#fff" opacity="0.10">
+              <animate attributeName="opacity" values="0.10;0.03;0.10" dur="2.3s" repeatCount="indefinite"/>
+            </circle>
           </svg>
-          <span className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>Loading...</span>
         </div>
+        <div className="flex flex-col items-center z-10 animate-fadeInSlow">
+          <div className="relative mb-8">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-40 blur-xl animate-pulse-slow" />
+            <svg className="animate-spin-slow h-16 w-16 text-green-500 drop-shadow-xl" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+            </svg>
+          </div>
+         
+        </div>
+        <style>{`
+          @keyframes fadeInSlow { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: none; } }
+          .animate-fadeInSlow { animation: fadeInSlow 1.2s cubic-bezier(0.4,0,0.2,1) both; }
+          @keyframes pulseSlow { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.7; } }
+          .animate-pulse-slow { animation: pulseSlow 2.5s cubic-bezier(0.4,0,0.6,1) infinite; }
+          @keyframes spinSlow { 100% { transform: rotate(360deg); } }
+          .animate-spin-slow { animation: spinSlow 2.2s linear infinite; }
+        `}</style>
       </div>
     );
   }
