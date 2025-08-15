@@ -100,7 +100,7 @@ const ChatBot: React.FC = () => {
       {open && (
         <div className="w-80 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl shadow-xl mt-4 p-4">
           <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white">Udaan ChatBot</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">Ask a question:</p>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">Ask a question :</p>
           <ul className="space-y-2 mb-4">
             {QUESTIONS.map((item, idx) => (
               <li key={idx}>
