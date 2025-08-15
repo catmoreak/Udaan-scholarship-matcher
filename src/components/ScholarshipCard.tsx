@@ -142,8 +142,8 @@ const ScholarshipCard: React.FC<ScholarshipCardProps> = ({ scholarship }) => {
             >
               <span className="pr-1">Apply now</span>
             </a>
-            <button
-              className="px-4 py-2 bg-green-50 hover:bg-green-100 text-green-700 font-semibold rounded-full border border-green-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 transition-all text-base"
+            <button 
+              className="px-4 py-1 bg-green-50 hover:bg-green-100 text-green-700 font-semibold rounded-full border border-green-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-green-300 transition-all text-base"
               onClick={() => setGeminiOpen(true)}
               aria-label="Ask AI about this scholarship"
             >
