@@ -124,8 +124,7 @@ const AppContent: React.FC = () => {
               <span className="shadow"></span>
             </div>
           </div>
-          <div className="text-2xl font-bold text-gray-800 dark:text-white tracking-wide mb-2 animate-fadeInSlow">Finding the best scholarships for you...</div>
-          <div className="text-base text-gray-500 dark:text-gray-300 animate-fadeInSlow">Empowering your dreams. Please wait!</div>
+          
         </div>
         <style>{`
           @keyframes fadeInSlow { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: none; } }
