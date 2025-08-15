@@ -6,8 +6,28 @@ const Header: React.FC = () => {
   const { isDark, toggleTheme } = useTheme();
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-700 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="relative bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-700 transition-colors overflow-hidden">
+      {/* Animated stars background for dark mode */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+        <svg width="100%" height="100%" className="w-full h-full" style={{ position: 'absolute', top: 0, left: 0 }}>
+          <circle cx="10%" cy="20%" r="3.2" fill="#fff" opacity="1">
+            <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="30%" cy="40%" r="2.2" fill="#fff" opacity="0.95">
+            <animate attributeName="opacity" values="0.95;0.2;0.95" dur="1.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="70%" cy="30%" r="2.5" fill="#fff" opacity="1">
+            <animate attributeName="opacity" values="1;0.4;1" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="80%" cy="60%" r="3.5" fill="#fff" opacity="0.95">
+            <animate attributeName="opacity" values="0.95;0.3;0.95" dur="2.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="50%" cy="80%" r="2.7" fill="#fff" opacity="0.9">
+            <animate attributeName="opacity" values="0.9;0.2;0.9" dur="1.8s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
+      </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
             <div className="bg-gradient-to-r from-green-600 to-lime-500 p-2 rounded-lg">
