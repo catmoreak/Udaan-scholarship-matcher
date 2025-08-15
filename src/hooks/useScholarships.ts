@@ -39,38 +39,31 @@ export const useScholarships = () => {
     const filtered = scholarships.filter(scholarship => {
       const { eligibility } = scholarship;
       
-      // Check class range
-      if (criteria.class < eligibility.minClass || criteria.class > eligibility.maxClass) {
+  if (criteria.class < eligibility.minClass || criteria.class > eligibility.maxClass) {
         return false;
       }
       
-      // Check age range
-      if (criteria.age < eligibility.minAge || criteria.age > eligibility.maxAge) {
+  if (criteria.age < eligibility.minAge || criteria.age > eligibility.maxAge) {
         return false;
       }
       
-      // Check percentage
-      if (criteria.percentage < eligibility.minPercentage) {
+  if (criteria.percentage < eligibility.minPercentage) {
         return false;
       }
       
-      // Check category
-      if (!eligibility.categories.includes(criteria.category) && !eligibility.categories.includes('All')) {
+  if (!eligibility.categories.includes(criteria.category) && !eligibility.categories.includes('All')) {
         return false;
       }
       
-      // Check religion
-      if (criteria.religion !== 'Any' && !eligibility.religions.includes(criteria.religion) && !eligibility.religions.includes('All')) {
+  if (criteria.religion !== 'Any' && !eligibility.religions.includes(criteria.religion) && !eligibility.religions.includes('All')) {
         return false;
       }
       
-      // Check location
-      if (!eligibility.location.includes(criteria.location) && !eligibility.location.includes('Both')) {
+  if (!eligibility.location.includes(criteria.location) && !eligibility.location.includes('Both')) {
         return false;
       }
       
-      // Check disability requirement
-      if (eligibility.disability && !criteria.disability) {
+  if (eligibility.disability && !criteria.disability) {
         return false;
       }
       
