@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-// ...existing code...
+
 
 const ChatBot: React.FC = () => {
   const [open, setOpen] = useState(false);
@@ -10,7 +10,7 @@ const ChatBot: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
-  // Tooltip animation state
+
   const [showTooltip, setShowTooltip] = useState(false);
   const [shake, setShake] = useState(false);
 
@@ -62,7 +62,6 @@ const ChatBot: React.FC = () => {
     setLoading(false);
   };
 
-  // Prevent background scroll when maximized
   useEffect(() => {
     if (maximized && open) {
       document.body.style.overflow = 'hidden';
@@ -105,7 +104,7 @@ const ChatBot: React.FC = () => {
               <rect x="48" y="34" width="4" height="8" rx="2" fill="#4ade80" />
             </svg>
           </button>
-          {/* Tooltip: shakes and appears every 5s, also on hover */}
+        
           <div
             className={`absolute left-1/2 -translate-x-1/2 -top-12 z-50 pointer-events-none transition-opacity duration-200 ${
               (showTooltip ? 'opacity-100' : 'opacity-0')
@@ -117,7 +116,7 @@ const ChatBot: React.FC = () => {
               }`}
               style={{ minWidth: 120 }}
             >
-              {/* Info icon */}
+           
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none" className="flex-shrink-0" aria-hidden="true">
                 <circle cx="10" cy="10" r="9" fill="#4ade80" />
                 <text x="10" y="15" textAnchor="middle" fontSize="12" fontWeight="bold" fill="#fff" fontFamily="Arial" dominantBaseline="middle">i</text>

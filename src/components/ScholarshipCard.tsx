@@ -13,7 +13,7 @@ const ScholarshipCard: React.FC<ScholarshipCardProps> = ({ scholarship }) => {
   const [geminiAnswer, setGeminiAnswer] = useState('');
   const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
-  // Fetch default info when modal opens
+ 
   React.useEffect(() => {
     if (geminiOpen) {
       const fetchDefaultInfo = async () => {
@@ -107,7 +107,7 @@ const ScholarshipCard: React.FC<ScholarshipCardProps> = ({ scholarship }) => {
               <span>{scholarship.eligibility.location.join(', ')}</span>
             </div>
             <div className="flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400">
-              {/* ...other info if needed... */}
+              
             </div>
           </div>
           <div className="mb-4">
@@ -152,7 +152,7 @@ const ScholarshipCard: React.FC<ScholarshipCardProps> = ({ scholarship }) => {
           </div>
         </div>
       </div>
-      {/* Gemini Modal rendered at root level to avoid overlap/clipping */}
+     
       {geminiOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fadeIn">
           <div className="bg-white/80 dark:bg-gray-900/80 rounded-3xl shadow-2xl p-0 w-full max-w-xl relative border border-green-200 dark:border-green-700 animate-modalPop backdrop-blur-lg" style={{boxShadow: '0 8px 40px 0 rgba(34,197,94,0.15), 0 1.5px 8px 0 rgba(0,0,0,0.08)'}}>
