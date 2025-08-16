@@ -1,0 +1,19 @@
+/* Custom thin scrollbar for the whole app */
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #010f16;
+  border-radius: 3px;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #79e217 #130f0f;
+}
