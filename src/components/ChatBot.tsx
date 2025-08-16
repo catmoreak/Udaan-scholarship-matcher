@@ -36,7 +36,7 @@ const ChatBot: React.FC = () => {
     if (!input.trim()) return;
     setMessages(msgs => [...msgs, { sender: 'user', text: input }]);
     setLoading(true);
-    // System prompt to restrict answers to education scholarships only
+   
     const systemPrompt = "You are a helpful assistant for an education scholarship platform. Only answer questions related to education scholarships. If a question is not about education scholarships, politely reply that you can only answer questions about education and scholarships.";
     try {
       const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent', {
