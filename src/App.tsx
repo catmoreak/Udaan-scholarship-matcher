@@ -8,9 +8,83 @@ import ChatBot from './components/ChatBot';
 
 import { useScholarships } from './hooks/useScholarships';
 
+// import ScholarshipAIAssistant from "./components/ScholarshipAIAssistant";
+
+// Dismissible disclaimer notification component
+function DisclaimerNotification() {
+  const [visible, setVisible] = React.useState(true);
+  if (!visible) return null;
+  return (
+    <div
+      className="fixed top-0 left-0 w-full z-50 flex justify-center items-start px-2 sm:px-4 pt-4 pointer-events-none"
+      role="region"
+      aria-label="Disclaimer notification"
+    >
+      <div
+        className="pointer-events-auto w-full max-w-md sm:max-w-xl bg-green-50 dark:bg-green-900/90 border border-green-300 dark:border-green-700 text-green-900 dark:text-green-100 rounded-xl shadow-2xl flex items-start gap-3 px-4 py-3"
+        style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18)' }}
+      >
+        <div className="pt-1">
+          <svg className="h-7 w-7 text-green-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </div>
+        <div className="flex-1 min-w-0">
+          <span className="block text-base font-semibold mb-1">Disclaimer</span>
+          <span className="block text-sm leading-relaxed">
+            The scholarship data shown here is compiled from various public sources. While we strive for accuracy, some details (such as eligibility, deadlines, or rewards) may change or be outdated. <b>User discretion is required.</b> Please verify with the official scholarship websites before applying.
+          </span>
+        </div>
+        <button
+          onClick={() => setVisible(false)}
+          className="ml-2 mt-1 text-green-700 dark:text-green-200 hover:text-green-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-green-400 rounded-full transition-colors duration-150"
+          aria-label="Dismiss disclaimer notification"
+        >
+          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+const StarsBackground: React.FC = () => (
+  <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 w-full h-full">
+    <svg width="100%" height="100%" className="w-full h-full" style={{ position: 'absolute', top: 0, left: 0 }}>
+      {/* Main stars */}
+      <circle cx="10%" cy="20%" r="2.5" fill="#fff" opacity="0.7">
+        <animate attributeName="opacity" values="0.7;0.2;0.7" dur="2.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="30%" cy="40%" r="1.8" fill="#fff" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.1;0.5" dur="1.7s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="70%" cy="30%" r="2.1" fill="#fff" opacity="0.6">
+        <animate attributeName="opacity" values="0.6;0.2;0.6" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="80%" cy="60%" r="2.7" fill="#fff" opacity="0.5">
+        <animate attributeName="opacity" values="0.5;0.15;0.5" dur="2.3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="50%" cy="80%" r="2.2" fill="#fff" opacity="0.4">
+        <animate attributeName="opacity" values="0.4;0.1;0.4" dur="1.9s" repeatCount="indefinite"/>
+      </circle>
+      {/* Extra subtle background stars */}
+      <circle cx="15%" cy="70%" r="1.1" fill="#fff" opacity="0.18">
+        <animate attributeName="opacity" values="0.18;0.05;0.18" dur="2.7s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="60%" cy="15%" r="1.3" fill="#fff" opacity="0.13">
+        <animate attributeName="opacity" values="0.13;0.03;0.13" dur="2.1s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="90%" cy="50%" r="1.4" fill="#fff" opacity="0.12">
+        <animate attributeName="opacity" values="0.12;0.04;0.12" dur="2.9s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="40%" cy="10%" r="1.0" fill="#fff" opacity="0.10">
+        <animate attributeName="opacity" values="0.10;0.03;0.10" dur="2.3s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+);
+
 const AppContent: React.FC = () => {
   // Track if user has submitted the filter form
   const [hasSearched, setHasSearched] = useState(false);
+
   // Only show scholarships after user submits the form
   const handleFilter = (criteria: any) => {
     setHasSearched(true);
@@ -28,15 +102,10 @@ const AppContent: React.FC = () => {
     filterScholarships,
     refetch 
   } = useScholarships();
+
   // Detect dark mode for loader
   const isDark = typeof window !== 'undefined' && document.documentElement.classList.contains('dark');
-  // Back to Top button
-  const [showTop, setShowTop] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 300);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+
   if (showLoader) {
     return (
       <div className={`fixed inset-0 flex flex-col items-center justify-center z-50 min-h-screen w-full ${isDark ? 'bg-gradient-to-br from-green-900 via-green-700 to-green-500' : 'bg-gradient-to-br from-green-200 via-green-400 to-white'} transition-colors`}>
@@ -55,6 +124,7 @@ const AppContent: React.FC = () => {
               <span className="shadow"></span>
             </div>
           </div>
+          
         </div>
         <style>{`
           @keyframes fadeInSlow { from { opacity: 0; transform: translateY(30px);} to { opacity: 1; transform: none; } }
@@ -124,20 +194,18 @@ const AppContent: React.FC = () => {
       </div>
     );
   }
+
+
+
   return (
-    <div className="min-h-screen font-['Poppins','Comic Neue','Comic Sans MS','cursive'] relative">
-      {/* Animated gradient background */}
-      <div className="fixed inset-0 -z-10 animate-gradient bg-gradient-to-br from-green-200 via-blue-100 to-pink-200 dark:from-gray-900 dark:via-gray-950 dark:to-green-950" />
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors relative">
       <StarsBackground />
       {/* Disclaimer Notification */}
       <DisclaimerNotification />
-      {/* Glassmorphism sticky header */}
-      <div className="sticky top-0 z-40 backdrop-blur-md bg-white/70 dark:bg-gray-900/70 shadow-lg border-b border-gray-200 dark:border-gray-800">
-        <Header />
-      </div>
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10 drop-shadow-2xl">
+      <Header />
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white mb-4 font-['Luckiest_Guy','Poppins','Comic Neue','Comic Sans MS','cursive'] tracking-wide">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
             Discover Your Path to Success
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
@@ -206,16 +274,6 @@ const AppContent: React.FC = () => {
         ) : null}
       </main>
       <ChatBot />
-      {/* Floating Back to Top button */}
-      {showTop && (
-        <button
-          className="fixed bottom-8 right-8 z-50 bg-blue-700 text-white rounded-full p-3 shadow-lg hover:bg-pink-600 transition-all animate-bounce"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          aria-label="Back to top"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="h-7 w-7"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" /></svg>
-        </button>
-      )}
     </div>
   );
 };
