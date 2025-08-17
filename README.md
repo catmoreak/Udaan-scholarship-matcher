@@ -8,6 +8,8 @@
 
 Many deserving students miss out on scholarships due to lack of awareness, confusing eligibility criteria, or overwhelming application processes. Udaan was created to bridge this gap—making it easy for students to discover, filter, and apply for scholarships that truly match their background and aspirations. With a focus on accessibility, guidance, and a seamless user experience, Udaan empowers students to pursue their educational dreams without financial barriers.
 
+Powered by Supabase and Gemini 
+
 Udaan Scholarship Matcher is a modern, user-friendly web application that helps students discover and apply for scholarships that match their profile. Built with React, TypeScript, Tailwind CSS, and Supabase, it features a professional UI, dark mode, advanced filtering, and a helpful chatbot assistant.
 
 ## Features
@@ -22,6 +24,15 @@ Udaan Scholarship Matcher is a modern, user-friendly web application that helps 
   - Floating chatbot with preset Q&A and animated tooltip for help.
 - **Supabase Integration:**
   - Fetches scholarship data securely from Supabase backend.
+
+
+## Getting Started
+React + Vite
+Tailwind
+Supabase
+Gemini 
+
+
 
 ## Getting Started
 
