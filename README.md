@@ -26,11 +26,11 @@ Udaan Scholarship Matcher is a modern, user-friendly web application that helps 
   - Fetches scholarship data securely from Supabase backend.
 
 
-## Getting Started
-React + Vite
-Tailwind
-Supabase
-Gemini 
+## Techstacks
+- React + Vite
+- Tailwind
+- Supabase
+- Gemini 
 
 
 
